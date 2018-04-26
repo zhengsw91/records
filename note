@@ -59,4 +59,26 @@ countDownLatch.countDown()
 CountDownLatch最重要的方法是countDown()和await()，前者主要是倒数一次，后者是等待倒数到0，如果没有到达0，就只有阻塞等待了。
 6）内部类
 内部类只能由该非静态方法访问
-
+7）synchronized
+a)该关键字不能继承，可以定义方法
+在定义接口方法时不能使用
+b)代码块，在同一时刻只能有一个线程得到执行，其他线程受阻塞
+c）当一个线程访问对象的一个synchronized(this)同步代码块时，另一个线程仍然可以访问该对象中的
+非synchronized(this)同步代码块
+4）对象
+用synchronized给account对象加了锁，当一个线程访问account对象时，其他试图访问account对象
+的线程将会阻塞。
+当有明确的对象作为锁时，synchronized(obj)
+当没有明确对象作为锁时，synchronized(lock)
+5）修饰一个类
+class ClassName {  
+   public void method() {  
+      synchronized(ClassName.class) {  
+         // todo  
+      }  
+   }  
+}  
+总结
+A. 无论synchronized关键字加在方法上还是对象上，如果它作用的对象是非静态的，则它取得的锁是对象；如果synchronized作用的对象是一个静态方法或一个类，则它取得的锁是对类，该类所有的对象同一把锁。 
+B. 每个对象只有一个锁（lock）与之相关联，谁拿到这个锁谁就可以运行它所控制的那段代码。 
+C. 实现同步是要很大的系统开销作为代价的，甚至可能造成死锁，所以尽量避免无谓的同步控制。

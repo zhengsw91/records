@@ -83,20 +83,20 @@ A. 无论synchronized关键字加在方法上还是对象上，如果它作用�
 B. 每个对象只有一个锁（lock）与之相关联，谁拿到这个锁谁就可以运行它所控制的那段代码。 
 C. 实现同步是要很大的系统开销作为代价的，甚至可能造成死锁，所以尽量避免无谓的同步控制。
 
-8）竞态条件
+八）竞态条件
 多线程对一些资源的竞争的时候就会产生竞态条件，如果首先要执行的程序竞争失败排到后面执行了，
 就会出现一些不确定的bug
 解决方法用synchronized
 
-9）notify()和notifyAll（）
+九）notify()和notifyAll（）
 notify只能唤醒一个线程
 notifyAll唤醒所有线程，并允许他们争夺资源
 
-10）为什么wait, notify 和 notifyAll这些方法不在thread类里面？
+十）为什么wait, notify 和 notifyAll这些方法不在thread类里面？
 这些方法都在Object类里
 由于wait,notify,notifyAll都是锁级别的操作，所以把他们定义在Object类中因为锁属于对象
 
-11）为什么wait和notify方法要在同步块中调用？
+十一）为什么wait和notify方法要在同步块中调用？
 主要是因为Java API强制要求这样做，如果你不这么做，你的代码会抛出IllegalMonitorStateException异常。
 还有一个原因是为了避免wait和notify之间产生竞态条件。
 
